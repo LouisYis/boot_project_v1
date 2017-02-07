@@ -1,23 +1,37 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
+  <div id="app"> 
+    <!-- <img src="./assets/logo.png"> -->
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  export default {
+    name: 'app'
+  }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  // 引入css库
+  @import "../node_modules/font-awesome/css/font-awesome.min.css";
+  @import "../node_modules/normalize.css"; 
+  // 引入scss文件
+  @import "scss/_container";
+  @import "scss/_clearfix";
+
+  html,body {
+    height: 100%;
+  }
+
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+    color: #fff;  
+    background: #435571;
+    min-height: 100%; 
+    .loading-container{
+      text-align: center;
+    }
+  }
 </style>
