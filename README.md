@@ -1,4 +1,4 @@
-# no_test_vue
+# boot_project_v1
 
 > A Vue.js project
 
