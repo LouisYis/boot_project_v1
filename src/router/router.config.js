@@ -1,25 +1,25 @@
-import Login from 'pages/Login'
-import Home from 'pages/Home'
-import Notfound from 'pages/Notfound'
-import Vuextest from 'pages/Vuextest'
+// import Login from 'pages/Login'
+// import Home from 'pages/Home'
+// import Notfound from 'pages/Notfound'
+// import Vuextest from 'pages/Vuextest'
 
 const routers = [
   {
     path: '/',
     name: 'Login',
-    component: Login
+    component: resolve => require(['pages/Login'], resolve)
   }, {
     path: '/home',
     name: 'Home',
-    component: Home
+    component: resolve => require(['pages/Home'], resolve)
   }, {
     path: '/vuextest',
     name: 'Vuextest',
-    component: Vuextest
+    component: resolve => require(['pages/Vuextest'], resolve)
   }, {
     path: '*',
     name: 'Notfound',
-    component: Notfound
+    component: resolve => require(['pages/Notfound'], resolve)
   }
 ]
 
