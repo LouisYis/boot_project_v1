@@ -31,3 +31,9 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  h2,p {
+    color: #fff;
+  }
+</style>
