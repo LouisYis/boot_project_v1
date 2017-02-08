@@ -17,6 +17,18 @@ const routers = [
     name: 'Vuextest',
     component: resolve => require(['pages/Vuextest'], resolve)
   }, {
+    path: '/tables',
+    name: 'Tables',
+    component: resolve => require(['pages/Tables'], resolve),
+    children: [
+      {
+        path: 'tableexpand',
+        component: resolve => require(['components/Tableexpand'], resolve)
+      }, {
+        path: '*',
+        component: resolve => require(['components/Tableexpand'], resolve)
+      }]
+  }, {
     path: '*',
     name: 'Notfound',
     component: resolve => require(['pages/Notfound'], resolve)

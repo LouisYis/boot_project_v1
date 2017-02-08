@@ -19,7 +19,9 @@
         <el-menu-item index="3-2">
           <router-link to="/any">404</router-link>
         </el-menu-item>
-        <!-- <el-menu-item index="3-3">选项3</el-menu-item> -->
+        <el-menu-item index="3-2">
+          <router-link to="/tables">Tables</router-link>
+        </el-menu-item>
       </el-submenu>
       <el-menu-item index="4" >
         <router-link to="/">Quit</router-link>

@@ -59,11 +59,31 @@
       submitForm (formName) {
         var vm = this
         console.log(vm.state)
+        // var resurl = 'http://192.168.25.102:80/api/users'
+        var resurl = 'http://192.168.25.102:80/api/createusers'
+
         vm.$refs[formName].validate((valid) => {
           if (valid) {
             // alert('submit!')
-            sessionStorage.setItem('accessToken', 'loveqin')
-            this.$router.push({path: '/home'})
+            // vm.$http.get(resurl)
+            vm.$http.post(resurl, {
+              'username': vm.ruleForm.user,
+              'password': vm.ruleForm.pass
+            })
+            .then(function (data) {
+              console.log(data)
+              // if (data.body.code === 0) {
+              //   global.authdata = data.body.responseData
+              //   sessionStorage.setItem('accessToken', global.authdata)
+              //   vm.$router.push({path: '/home'})
+              // }
+              console.log(data.body[0].id)
+              global.authdata = data.body[0].id
+              sessionStorage.setItem('accessToken', global.authdata)
+              vm.$router.push({path: '/home'})
+            }, function (res) {
+              // console.log(res)
+            })
           } else {
             console.error('error submit!!')
             vm.state = true

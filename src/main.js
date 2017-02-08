@@ -14,6 +14,17 @@ Vue.use(VueResource)
 Vue.use(Element)
 Vue.use(Vuex)
 
+global.authdata = ''
+
+Vue.http.interceptors.push((request, next) => {
+  request.headers.set('Authorization', global.authdata)
+  request.headers.set('Content-Type', 'application/json;charset=UTF-8')
+  next((response) => {
+    console.log(response.status)
+    return response
+  })
+})
+
 new Vue({
   el: '#app',
   router,
