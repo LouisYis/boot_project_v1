@@ -60,7 +60,7 @@
         var vm = this
         console.log(vm.state)
         // var resurl = 'http://192.168.25.102:80/api/users'
-        var resurl = 'http://192.168.25.102:80/api/createusers'
+        var resurl = global.host + '/api/createusers'
 
         vm.$refs[formName].validate((valid) => {
           if (valid) {
