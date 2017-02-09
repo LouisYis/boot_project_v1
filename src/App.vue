@@ -33,4 +33,8 @@
       text-align: center;
     }
   }
+  
+  .text-white{
+    color: #fff;
+  }
 </style>

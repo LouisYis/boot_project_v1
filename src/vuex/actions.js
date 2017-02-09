@@ -10,3 +10,9 @@ export const dvshow = ({commit}) => {
 export const dvhide = ({commit}) => {
   commit('HIDE')
 }
+export const userlogin = ({commit}, user) => {
+  commit('USER_LOGIN', user)
+}
+export const userloginout = ({commit}) => {
+  commit('USER_LOGINOUT')
+}

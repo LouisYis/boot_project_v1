@@ -30,6 +30,7 @@ router.beforeEach((to, from, next) => {
       })
     } else {
       NProgress.start()
+      global.authdata === '7758525' ? global.authname = '测试用户' : global.authname = '当前用户'
       next()
     }
   }

@@ -28,7 +28,4 @@
 </script>
 
 <style lang='scss' scoped>
-  .text-white{
-    color: #fff;
-  }
 </style>

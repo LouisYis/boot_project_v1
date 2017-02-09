@@ -1,10 +1,10 @@
 <template>
   <el-form :model="ruleForm" :rules="rules" ref="ruleForm" v-bind:label-width="labelwidth" class="boot-form">
-    <el-form-item label="用户名" prop="user">
-      <el-input type="text" v-model="ruleForm.user" auto-complete="off"></el-input>
+    <el-form-item label="用户名" prop="username">
+      <el-input type="text" v-model="ruleForm.username" auto-complete="off"></el-input>
     </el-form-item>
-    <el-form-item label="密码" prop="pass">
-      <el-input type="password" v-model="ruleForm.pass" auto-complete="off"></el-input>
+    <el-form-item label="密码" prop="password">
+      <el-input type="password" v-model="ruleForm.password" auto-complete="off"></el-input>
     </el-form-item>  
     <el-form-item>
       <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
@@ -24,6 +24,8 @@
 <script>
   import filter from '../filters/filters.js'
   import '../scss/_code.scss'
+  import {mapActions} from 'vuex'
+
   export default {
     name: 'loginform',
     props: ['labelwidth'],
@@ -39,16 +41,15 @@
         cout: filter.numspa(10000782937897, ' '),
         state: false,
         ruleForm: {
-          pass: '',
-          user: '',
-          age: ''
+          password: '',
+          username: ''
         },
         rules: {
-          user: [
-            { required: true, message: '请输入活动名称', trigger: 'blur' },
+          username: [
+            { required: true, message: '请输入用户名', trigger: 'blur' },
             { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
           ],
-          pass: [
+          password: [
             { required: true, message: '请输入密码', trigger: 'blur' },
             { validator: validatePass, trigger: 'blur' }
           ]
@@ -56,6 +57,7 @@
       }
     },
     methods: {
+      ...mapActions(['userlogin']),
       submitForm (formName) {
         var vm = this
         console.log(vm.state)
@@ -67,8 +69,8 @@
             // alert('submit!')
             // vm.$http.get(resurl)
             vm.$http.post(resurl, {
-              'username': vm.ruleForm.user,
-              'password': vm.ruleForm.pass
+              'username': vm.ruleForm.username,
+              'password': vm.ruleForm.password
             })
             .then(function (data) {
               console.log(data)
@@ -81,6 +83,7 @@
               console.log(data.body[0].id)
               global.authdata = data.body[0].id
               sessionStorage.setItem('accessToken', global.authdata)
+              this.userlogin(vm.ruleForm)
               vm.$router.push({path: '/home'})
             }, function (res) {
               // console.log(res)
@@ -88,6 +91,7 @@
               // 正式环境不需要此处代码
               global.authdata = '7758525'
               sessionStorage.setItem('accessToken', global.authdata)
+              this.userlogin(vm.ruleForm)
               vm.$router.push({path: '/home'})
             })
           } else {

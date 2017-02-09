@@ -4,3 +4,6 @@ export const getCount = state => {
 export const getDv = state => {
   return state.dv
 }
+export const getUser = state => {
+  return state.user
+}
