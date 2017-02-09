@@ -99,7 +99,9 @@ vue init webpack my-project
 
 
 ###推荐使用cnpm(淘宝镜像)
->npm install -g cnpm --registry=https://registry.npm.taobao.org
+```
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+```
 注： 如果使用cnpm，dos窗口出现header{}，不能下载，设置proxy即可解决
 
 ## 使用
