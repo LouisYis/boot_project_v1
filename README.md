@@ -85,3 +85,42 @@ npm run build
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+ 
+## 前言
+
+>安装node------------>安装webpack-------------->安装vue-cli
+快速带过官方脚手架初始化新建项目：
+
+``` bash
+# vue init
+vue init webpack my-project 
+``` 
+项目名、vue-router、eslint、test等按需要选择
+
+
+###推荐使用cnpm(淘宝镜像)
+>npm install -g cnpm --registry=https://registry.npm.taobao.org
+注： 如果使用cnpm，dos窗口出现header{}，不能下载，设置proxy即可解决
+
+## 使用
+
+下载项目，步骤见Build Setup
+
+## 说明
+
+### 1.引用其他库：
+>方法一：在package.json中dependencies栏添加相应的包，执行npm install
+>方法二：使用npm install [name] --save
+
+### 2.本地json请求
+>本地json文件需放置在static目录下，并通过
+``` bash 
+url:"../static/name.json"
+``` 
+调用
+
+### 3.sass(scss)使用
+>需在style中使用lang="scss"，如：
+``` bash 
+<style lang="scss"></style>
+``` 
