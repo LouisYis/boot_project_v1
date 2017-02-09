@@ -10,6 +10,7 @@
   vuex,
   vue-router及懒加载路由,
   vue-resource
+  并使用饿了么element-ui作为UI库
 
 代码结构： 
 ```
@@ -108,6 +109,66 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 下载项目，运行步骤见Build Setup
 
+## vue相关点
+### 1.组件
+```
+# f.vue文件
+<template>
+  <div p='prop1' o='prop2'></div>
+</template>
+<script>  
+exprot default {
+  name: 'component-name',
+  props: [
+    'prop1','prop2'
+  ]
+}
+</script>
+
+# l.vue
+<template>
+  <f :prop1='hello' :prop2='vueJs'></f>  
+</template>
+<script>
+  import f from 'f.vue'
+
+  export default {
+    components: [
+      f
+    ]
+  }
+</script>
+```
+### 2.懒加载路由及子路由
+```
+routes:[
+  {
+    path: '/',
+    component: resolve => require(['pages/Home'],resolve)
+  }, {
+    path: '/tables',
+    component: resolve => require(['pages/Tables'],resolve),
+    children: [
+      {
+        path: 'tablechild',
+        component: resolve => require(['components/Tableexpand'],resolve)
+      }
+    ] 
+  }
+]
+// 路径：.../tables/tablechild
+// 跳路由Tableexpand.vue
+```
+### 3.vue-resouce
+```
+vm.$http.get(url).then(function(data){},function(res){})
+vm.$http.post(url,{}).then(function(data){},function(res){})
+vm.$http.jsonp(url).then(function(data){},function(res){})
+
+//可使用其他如jQuery.ajax(),axios等，使用之前确保install
+//在vue2.0更新后，vue-resource不再对其更新，作者推荐使用axios
+```
+
 ## 说明
 
 ### 1.引用其他库：
@@ -129,3 +190,4 @@ url:"../static/name.json"
 ``` bash 
 <style lang="scss"></style>
 ``` 
+
