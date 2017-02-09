@@ -104,23 +104,26 @@ vue init webpack my-project
 
 ## 使用
 
-下载项目，步骤见Build Setup
+下载项目，运行步骤见Build Setup
 
 ## 说明
 
 ### 1.引用其他库：
->方法一：在package.json中dependencies栏添加相应的包，执行npm install
->方法二：使用npm install [name] --save
-
+```
+方法一：在package.json中dependencies栏添加相应的包，执行
+        npm install
+方法二：使用
+        npm install [name] --save
+```
 ### 2.本地json请求
->本地json文件需放置在static目录下，并通过
+本地json文件需放置在static目录下，并通过
 ``` bash 
 url:"../static/name.json"
 ``` 
 调用
 
 ### 3.sass(scss)使用
->需在style中使用lang="scss"，如：
+需在style中使用lang="scss"，如：
 ``` bash 
 <style lang="scss"></style>
 ``` 
