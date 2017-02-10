@@ -113,7 +113,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ## 开发阶段
 
 ### 端口号设定：
-```
+```bash
 # conifg/index.js
   ...
     dev: {
@@ -127,7 +127,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ## vue
 
 ### 1.组件
-```
+```bash
 # f.vue文件
   <template>
     <div p='prop1' o='prop2'></div>
@@ -178,7 +178,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ```
 
 ### 3.vue-resouce
-```
+```bash
   vm.$http.get(url).then(function(data){},function(res){})
   vm.$http.post(url,{}).then(function(data){},function(res){})
   vm.$http.jsonp(url).then(function(data){},function(res){})
@@ -187,7 +187,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
   //在vue2.0更新后，vue-resource不再对其更新，作者推荐使用axios
 ```
 ### 4.vuex
-```
+```bash
 # vuex/store.js
   import Vue from 'vue'
   import Vuex from 'vuex'
@@ -262,7 +262,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 ### 1.初始化样式引入
 使用normalize.css进行初始化：
-```
+```bash
 # package.json
 
   "dependencies": {
@@ -272,21 +272,21 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
   }
 
 # App.vue
-<style lang="scss">
-  @import "../node_modules/normalize.css"; 
+  <style lang="scss">
+    @import "../node_modules/normalize.css"; 
 
-</style>
+  </style>
 ```
 
 ### 2.sass(scss)使用
 需在style中使用lang="scss"，如：
 ``` bash 
-<style lang="scss"></style>
+  <style lang="scss"></style>
 ``` 
-```
-在scss目录下新建a.scss
 
-在vue中引入：
+在scss目录下新建a.scss
+```bash 
+# f.vue中引用
   <style lang="scss">
     @import "scss/_container";
 
@@ -298,10 +298,10 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ## js说明
 
 ### 1.引用其他库：
-```
-方法一：在package.json中dependencies栏添加相应的包，执行
+```bash
+# 方法一：在package.json中dependencies栏添加相应的包，执行
         npm install
-方法二：使用
+# 方法二：使用
         npm install [name] --save
 ```
 ### 2.本地json请求
@@ -314,7 +314,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ### 3.data数据中引入本地图片路径
 
 使用require引入图片
-```
+```bash
 # templete中：
   <div v-for="item in banners">
       <img :src="item.url" :alt="item.title"/>
@@ -348,7 +348,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ```
 
 ### 4.filters使用
-```
+```bash
 # filters/filters.js
   /**
    * 过滤器表
@@ -407,7 +407,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ### 打包部署在服务器指定目录下：
 
 #### 第一步：
-```
+```bash
 # config/index.js
   ...  
     build: {
@@ -424,7 +424,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ```
 #### 第二步：
 打包完成后，将
-```
+```bash
   |--dist
   |  |--index.html
   |  |--static
@@ -435,7 +435,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 ### 打包部署服务器根目录下：
 使用默认的即可
-```
+```bash
 
 # config/index.js
   ...  
