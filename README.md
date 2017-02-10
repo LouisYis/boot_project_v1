@@ -89,19 +89,19 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
  
 ## 前言
 ```
-安装node------------>安装webpack-------------->安装vue-cli
+  安装node------------>安装webpack-------------->安装vue-cli
 ```
 快速带过官方脚手架初始化新建项目：
 ``` bash
 # vue init
-vue init webpack my-project 
+  vue init webpack my-project 
 ``` 
 项目名、vue-router、eslint、test等按需要选择
 
 
 #### 推荐使用cnpm(淘宝镜像)
 ```
-npm install -g cnpm --registry=https://registry.npm.taobao.org
+  npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
 注： 如果使用cnpm，dos窗口出现header{}，不能下载，设置proxy即可解决
 
@@ -109,67 +109,102 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 下载项目，运行步骤见Build Setup
 
-## vue相关点
+
+## vue
+
 ### 1.组件
 ```
 # f.vue文件
-<template>
-  <div p='prop1' o='prop2'></div>
-</template>
-<script>  
-exprot default {
-  name: 'component-name',
-  props: [
-    'prop1','prop2'
-  ]
-}
-</script>
-
-# l.vue
-<template>
-  <f :prop1='hello' :prop2='vueJs'></f>  
-</template>
-<script>
-  import f from 'f.vue'
-
-  export default {
-    components: [
-      f
+  <template>
+    <div p='prop1' o='prop2'></div>
+  </template>
+  <script>  
+  exprot default {
+    name: 'component-name',
+    props: [
+      'prop1','prop2'
     ]
   }
 </script>
+
+# l.vue
+  <template>
+    <f :prop1='hello' :prop2='vueJs'></f>  
+  </template>
+  <script>
+    import f from 'f.vue'
+
+    export default {
+      components: [
+        f
+      ]
+    }
+  </script>
 ```
 ### 2.懒加载路由及子路由
 ```
-routes:[
-  {
-    path: '/',
-    component: resolve => require(['pages/Home'],resolve)
-  }, {
-    path: '/tables',
-    component: resolve => require(['pages/Tables'],resolve),
-    children: [
-      {
-        path: 'tablechild',
-        component: resolve => require(['components/Tableexpand'],resolve)
-      }
-    ] 
-  }
-]
+  routes:[
+    {
+      path: '/',
+      component: resolve => require(['pages/Home'],resolve)
+    }, {
+      path: '/tables',
+      component: resolve => require(['pages/Tables'],resolve),
+      children: [
+        {
+          path: 'tablechild',
+          component: resolve => require(['components/Tableexpand'],resolve)
+        }
+      ] 
+    }
+  ]
 // 路径：.../tables/tablechild
 // 跳路由Tableexpand.vue
 ```
 ### 3.vue-resouce
 ```
-vm.$http.get(url).then(function(data){},function(res){})
-vm.$http.post(url,{}).then(function(data){},function(res){})
-vm.$http.jsonp(url).then(function(data){},function(res){})
+  vm.$http.get(url).then(function(data){},function(res){})
+  vm.$http.post(url,{}).then(function(data){},function(res){})
+  vm.$http.jsonp(url).then(function(data){},function(res){})
 
-//可使用其他如jQuery.ajax(),axios等，使用之前确保install
-//在vue2.0更新后，vue-resource不再对其更新，作者推荐使用axios
+  //可使用其他如jQuery.ajax(),axios等，使用之前确保install
+  //在vue2.0更新后，vue-resource不再对其更新，作者推荐使用axios
 ```
 
-## 说明
+
+## CSS说明
+
+### 1.初始化样式引入
+使用normalize.css进行初始化：
+```
+# package.json
+
+  "dependencies": {
+    "normalize.css": "^5.0.0"
+  }
+
+# App.vue
+<style lang="scss">
+  @import "../node_modules/normalize.css"; 
+
+</style>
+```
+### 2.sass(scss)使用
+需在style中使用lang="scss"，如：
+``` bash 
+<style lang="scss"></style>
+``` 
+```
+在scss目录下新建a.scss
+
+在vue中引入：
+  <style lang="scss">
+    @import "scss/_container";
+  </style>
+```
+
+
+## js说明
 
 ### 1.引用其他库：
 ```
@@ -181,13 +216,43 @@ vm.$http.jsonp(url).then(function(data){},function(res){})
 ### 2.本地json请求
 本地json文件需放置在static目录下，并通过
 ``` bash 
-url:"../static/name.json"
+  url:"../static/name.json"
 ``` 
 调用
 
-### 3.sass(scss)使用
-需在style中使用lang="scss"，如：
-``` bash 
-<style lang="scss"></style>
-``` 
+### 3.data数据中引入本地图片路径
+
+使用require引入图片
+```
+# templete中：
+  <div v-for="item in banners">
+      <img :src="item.url" :alt="item.title"/>
+  </div>
+
+# script中：
+  data() {
+        return {
+          listDatas: [], 
+          banners: [{
+            title: "banner1",
+            url: require("src/assets/banner/b_1.jpg") 
+          },{
+            title: "banner2",
+            url: require("src/assets/banner/b_2.jpg") 
+          },{
+            title: " banner3",
+            url: require("src/assets/banner/b_3.jpg")  
+          },{
+            title: "banner4",
+            url: require("src/assets/banner/b_4.jpg") 
+          },{
+            title: "banner5",
+            url: require("src/assets/banner/b_5.jpg")  
+          },{
+            title: "banner6",
+            url: require("src/assets/banner/b_6.jpg")  
+          }]
+        }
+      }
+```
 
