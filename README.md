@@ -110,6 +110,20 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 下载项目，运行步骤见Build Setup
 
 
+## 开发阶段
+
+### 端口号设定：
+```
+# conifg/index.js
+  ...
+    dev: {
+      ...
+      port: 8089 //默认为8080，改之即可
+      ...
+    }
+  ...
+```
+
 ## vue
 
 ### 1.组件
@@ -141,6 +155,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
     }
   </script>
 ```
+
 ### 2.懒加载路由及子路由
 ```
   routes:[
@@ -161,6 +176,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 // 路径：.../tables/tablechild
 // 跳路由Tableexpand.vue
 ```
+
 ### 3.vue-resouce
 ```
   vm.$http.get(url).then(function(data){},function(res){})
@@ -169,6 +185,76 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
   //可使用其他如jQuery.ajax(),axios等，使用之前确保install
   //在vue2.0更新后，vue-resource不再对其更新，作者推荐使用axios
+```
+### 4.vuex
+```
+# vuex/store.js
+  import Vue from 'vue'
+  import Vuex from 'vuex'
+  import * as actions from './actions.js'
+  import * as getters from './getters.js'
+
+  Vue.use(Vuex)
+  // 应用初始状态
+  const state = {
+    count: 10
+  }
+
+  // 定义所需的mutations
+  const mutations = {
+    INCRE (state) {
+      state.count++
+    },
+    DECRE (state) {
+      state.count--
+    }
+  }
+
+  // 创建store实例
+  export default new Vuex.Store({
+    actions,
+    getters,
+    state,
+    mutations
+  })
+
+# vuex/getter.js 状态获取
+  export const getCount = state => {
+    return state.count
+  }
+
+# vuex/actions.js 显示提交
+  export const increment = ({commit}) => {
+    commit('INCRE')
+  }
+  export const decrement = ({commit}) => {
+    commit('DECRE')
+  }
+
+# pages/vuextest.vue 使用
+  <template>
+    <p>{{getCount}}</p>
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+  </template>
+
+  <script>
+    import {mapGetters, mapActions} from 'vuex' // 引入
+    export default {
+      computed: {
+        // getters混入computed对象中
+        ...mapGetters([
+          'getCount'
+        ])
+      },
+      methods: {
+        ...mapActions([
+          'increment',
+          'decrement'
+        ])
+      }
+    }
+  </script>
 ```
 
 
@@ -180,7 +266,9 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 # package.json
 
   "dependencies": {
+    ...
     "normalize.css": "^5.0.0"
+    ...
   }
 
 # App.vue
@@ -189,6 +277,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 </style>
 ```
+
 ### 2.sass(scss)使用
 需在style中使用lang="scss"，如：
 ``` bash 
@@ -200,6 +289,8 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 在vue中引入：
   <style lang="scss">
     @import "scss/_container";
+
+    ...
   </style>
 ```
 
@@ -256,3 +347,102 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
       }
 ```
 
+### 4.filters使用
+```
+# filters/filters.js
+  /**
+   * 过滤器表
+   * Created by ChaoLeer on 17/1/25.
+   */
+  const filter = {
+    'numspa': null,
+    'trim': null
+  }
+
+  /**
+   * 千位分隔符，默认使用逗号','分隔
+   * @param  {[type]} value  [传入参数]
+   * @param  {[type]} splite [分隔符号，可选，默认为逗号',']
+   * @return {[type]}        [返回处理后数据]
+   */
+  filter.numspa = (value, div) => {
+    div = div || ','
+    return value.toString().replace(/\B(?=(\d{3})+$)/g, div)
+  }
+
+  /**
+   * 去除首尾空格
+   * @param  {[string]} string [字符串]
+   * @return {[string]}        [返回处理后数据]
+   */
+  filter.trim = (string) => {
+    return string.toString().replace()
+  }
+
+  export default filter
+
+
+# 调用文件
+  <templete>
+    <div>
+      <p>当前在线用户：<code>{{cout}}</code></p> 
+    </div>
+  </templete>
+  <script>
+    import filter from '../filters/filters.js'
+
+    export default {
+      data () {
+        return {
+          cout: filter.unumspa(10000782937897, ' ')
+        }
+      }
+    }
+  </script>
+
+  //当前在线用户：10 000 782 937 897
+```
+## 打包
+
+### 打包部署在服务器指定目录下：
+
+#### 第一步：
+```
+# config/index.js
+  ...  
+    build: {
+      ...
+      //设置为部署目录名
+      assetsPublicPath: '../boot_project_v1/'
+      ...
+    }
+  ...
+
+
+# 在命令窗口中使用
+  npm run build
+```
+#### 第二步：
+打包完成后，将
+```
+  |--dist
+  |  |--index.html
+  |  |--static
+  |     |--...
+
+```
+目录下的所有文件直接丢在服务器指定目录下(第一步设定的目录下即可)
+
+### 打包部署服务器根目录下：
+使用默认的即可
+```
+
+# config/index.js
+  ...  
+    build: {
+      ...
+      assetsPublicPath: '/'
+      ...
+    }
+  ...
+```
