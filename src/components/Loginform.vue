@@ -25,6 +25,7 @@
   import filter from '../filters/filters.js'
   import '../scss/_code.scss'
   import {mapActions} from 'vuex'
+  import utils from 'utils'
 
   export default {
     name: 'loginform',
@@ -86,6 +87,15 @@
               this.userlogin(vm.ruleForm)
               vm.$router.push({path: '/home'})
             }, function (res) {
+              // 测试统一异常处理工具
+              try {
+                throw new utils.Exception('系统异常', '10001', vm)
+              } catch (error) {
+                console.log(error)
+                // console.log(error.name)
+                // console.log(error.message)
+                // console.log(error.code)
+              }
               // console.log(res)
               // 注：在此处做了假处理，为服务无法调通时能够进入系统中
               // 正式环境不需要此处代码
@@ -95,7 +105,14 @@
               vm.$router.push({path: '/home'})
             })
           } else {
-            console.error('error submit!!')
+            // 测试日志工具
+            utils.Log('error submit!!')
+            // 测试字符串格式化工具
+            let s = utils.StringFormat('【{0}】{1}', '2013-15-11', 'adsfasdfddad')
+            console.log(s)
+            // 测试日期格式化工具
+            let d = utils.Format(new Date(), 'yyyy-MM-dd hh:mm:ss')
+            console.log(d)
             vm.state = true
             return false
           }

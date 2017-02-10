@@ -29,6 +29,10 @@ const routers = [
         component: resolve => require(['components/Tableexpand'], resolve)
       }]
   }, {
+    path: '/utilstest',
+    name: 'Utilstest',
+    component: resolve => require(['pages/Utilstest'], resolve)
+  }, {
     path: '*',
     name: 'Notfound',
     component: resolve => require(['pages/Notfound'], resolve)

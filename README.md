@@ -381,6 +381,75 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
   export default filter
 
+### 5.utils工具
+代码说明：
+```bash
+# utils/index.js
+  // 统一异常处理
+  import Exception from './exception.js'
+
+# utils/exception.js
+  funtion CommonException(){
+    ...
+  }
+  export default CommonException
+
+# Utilstest.vue
+  import utils from 'utils'
+  utils.Format(new Date(), 'yyyy-MM-dd hh:mm:ss') // 格式化日期
+```
+#### 字符串格式化工具
+```bash
+  StringFormat()
+```
+#### 日期格式化工具
+```bash
+  Format(new Date(), 'yyyy-MM-dd')
+```
+#### 日志工具
+```bash
+  Log("...")
+```
+#### 统一异常处理
+```bash
+  Exception('系统异常', '10001', vm)
+```
+
+### 6.ESlint
+注：若不以该规范进行，则出现阻断性提示，希望大家能够养成习惯，这样就可以更容易适应
+以下为默认规则(未进行修改)：
+
+```bash
+# 行结尾不能有空格
+
+# tab设置为转空格
+
+# 语句不需要使用;结尾
+  let a = 12
+# 函数必须用空格隔开参数
+  function () {
+    ...
+  }
+# 注释//后必须有空格间隔
+  let a = 12 // a为12
+# 循环语句需为以下格式：
+  for (let a = 0; a < 12; a++) {
+
+  }
+# 条件语句需为：
+  if () {
+
+  } else {
+
+  }
+# 参数,后需空格
+  function (c1, c2, c3) {
+    ...
+  }
+# 字符串必须为单引号' '
+  let a = '你好！'
+
+```
 
 # 调用文件
   <templete>

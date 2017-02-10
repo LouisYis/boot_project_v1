@@ -19,8 +19,11 @@
         <el-menu-item index="3-2">
           <router-link to="/any">404</router-link>
         </el-menu-item>
-        <el-menu-item index="3-2">
+        <el-menu-item index="3-3">
           <router-link to="/tables">Tables</router-link>
+        </el-menu-item>
+        <el-menu-item index="3-4">
+          <router-link to="/utilstest">UtilsTest</router-link>
         </el-menu-item>
       </el-submenu>
       <el-dropdown @command="handleCommand" trigger="click" class="right-bar">
