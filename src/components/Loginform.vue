@@ -41,8 +41,8 @@
         cout: filter.numspa(10000782937897, ' '),
         state: false,
         ruleForm: {
-          password: '',
-          username: ''
+          password: 'admin',
+          username: 'admin'
         },
         rules: {
           username: [
