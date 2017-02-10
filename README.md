@@ -380,6 +380,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
   }
 
   export default filter
+```
 
 ### 5.utils工具
 代码说明：
