@@ -354,32 +354,47 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
    * 过滤器表
    * Created by ChaoLeer on 17/1/25.
    */
-  const filter = {
-    'numspa': null,
-    'trim': null
+  // 千位分隔符，默认使用逗号','分隔
+  import numspa from './numspa.js'
+  // 去除首尾空格
+  import trim from './trim.js'
+
+  export {
+    numspa,
+    trim
   }
 
+# filters/numspa.js
   /**
    * 千位分隔符，默认使用逗号','分隔
    * @param  {[type]} value  [传入参数]
    * @param  {[type]} splite [分隔符号，可选，默认为逗号',']
    * @return {[type]}        [返回处理后数据]
    */
-  filter.numspa = (value, div) => {
+  const numspa = (value, div) => {
     div = div || ','
     return value.toString().replace(/\B(?=(\d{3})+$)/g, div)
   }
 
+  export default numspa
+
+# filters/trim.js
   /**
    * 去除首尾空格
    * @param  {[string]} string [字符串]
    * @return {[string]}        [返回处理后数据]
    */
-  filter.trim = (string) => {
+  const trim = (string) => {
     return string.toString().replace()
   }
 
-  export default filter
+  export default trim
+
+# 在*.vue里使用
+  import {trim, numspa} from 'filters'
+
+  trim(...)
+
 ```
 
 ### 5.utils工具
@@ -396,8 +411,8 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
   export default CommonException
 
 # Utilstest.vue
-  import utils from 'utils'
-  utils.Format(new Date(), 'yyyy-MM-dd hh:mm:ss') // 格式化日期
+  import {Format} from 'utils'
+  Format(new Date(), 'yyyy-MM-dd hh:mm:ss') // 格式化日期
 ```
 #### 字符串格式化工具
 ```bash
