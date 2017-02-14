@@ -113,8 +113,8 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ## 开发阶段
 
 ### 端口号设定：
-```bash
-# conifg/index.js
+```js
+// conifg/index.js
   ...
     dev: {
       ...
@@ -127,8 +127,8 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ## vue
 
 ### 1.组件
-```bash
-# f.vue文件
+```js
+// f.vue文件
   <template>
     <div p='prop1' o='prop2'></div>
   </template>
@@ -141,7 +141,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
   }
 </script>
 
-# l.vue
+// l.vue
   <template>
     <f :prop1='hello' :prop2='vueJs'></f>  
   </template>
@@ -157,7 +157,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ```
 
 ### 2.懒加载路由及子路由
-```
+```js
   routes:[
     {
       path: '/',
@@ -178,7 +178,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ```
 
 ### 3.vue-resouce
-```bash
+```js
   vm.$http.get(url).then(function(data){},function(res){})
   vm.$http.post(url,{}).then(function(data){},function(res){})
   vm.$http.jsonp(url).then(function(data){},function(res){})
@@ -187,8 +187,8 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
   //在vue2.0更新后，vue-resource不再对其更新，作者推荐使用axios
 ```
 ### 4.vuex
-```bash
-# vuex/store.js
+```js
+// vuex/store.js
   import Vue from 'vue'
   import Vuex from 'vuex'
   import * as actions from './actions.js'
@@ -218,12 +218,12 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
     mutations
   })
 
-# vuex/getter.js 状态获取
+// vuex/getter.js 状态获取
   export const getCount = state => {
     return state.count
   }
 
-# vuex/actions.js 显示提交
+// vuex/actions.js 显式提交
   export const increment = ({commit}) => {
     commit('INCRE')
   }
@@ -231,7 +231,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
     commit('DECRE')
   }
 
-# pages/vuextest.vue 使用
+// pages/vuextest.vue 使用
   <template>
     <p>{{getCount}}</p>
     <button @click="increment">+</button>
@@ -262,8 +262,8 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 ### 1.初始化样式引入
 使用normalize.css进行初始化：
-```bash
-# package.json
+```js
+// package.json
 
   "dependencies": {
     ...
@@ -271,7 +271,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
     ...
   }
 
-# App.vue
+// App.vue
   <style lang="scss">
     @import "../node_modules/normalize.css"; 
 
@@ -280,13 +280,13 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 ### 2.sass(scss)使用
 需在style中使用lang="scss"，如：
-``` bash 
+``` html 
   <style lang="scss"></style>
 ``` 
 
 在scss目录下新建a.scss
-```bash 
-# f.vue中引用
+```html 
+<!-- f.vue中引用 -->
   <style lang="scss">
     @import "scss/_container";
 
@@ -306,7 +306,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ```
 ### 2.本地json请求
 本地json文件需放置在static目录下，并通过
-``` bash 
+``` js 
   url:"../static/name.json"
 ``` 
 调用
@@ -314,13 +314,14 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ### 3.data数据中引入本地图片路径
 
 使用require引入图片
-```bash
-# templete中：
+```html
+<!-- templete中： -->
   <div v-for="item in banners">
       <img :src="item.url" :alt="item.title"/>
   </div>
-
-# script中：
+```
+```js
+// script中：
   data() {
         return {
           listDatas: [], 
@@ -348,8 +349,8 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ```
 
 ### 4.filters使用
-```bash
-# filters/filters.js
+```js
+// filters/filters.js
   /**
    * 过滤器表
    * Created by ChaoLeer on 17/1/25.
@@ -364,7 +365,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
     trim
   }
 
-# filters/numspa.js
+// filters/numspa.js
   /**
    * 千位分隔符，默认使用逗号','分隔
    * @param  {[type]} value  [传入参数]
@@ -378,7 +379,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
   export default numspa
 
-# filters/trim.js
+// filters/trim.js
   /**
    * 去除首尾空格
    * @param  {[string]} string [字符串]
@@ -390,44 +391,64 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
   export default trim
 
-# 在*.vue里使用
+// 在*.vue里使用
   import {trim, numspa} from 'filters'
 
   trim(...)
+```
+
+```html
+  <templete>
+    <div>
+      <p>当前在线用户：<code>{{cout}}</code></p> 
+    </div>
+  </templete>
+  <script>
+    import {numspa} from 'filters'
+
+    export default {
+      data () {
+        return {
+          cout: unumspa(10000782937897, ' ')
+        }
+      }
+    }
+    //当前在线用户：10 000 782 937 897
+  </script>
 
 ```
 
 ### 5.utils工具
 代码说明：
-```bash
-# utils/index.js
+```js
+// utils/index.js
   // 统一异常处理
   import Exception from './exception.js'
 
-# utils/exception.js
+// utils/exception.js
   funtion CommonException(){
     ...
   }
   export default CommonException
 
-# Utilstest.vue
+// Utilstest.vue
   import {Format} from 'utils'
   Format(new Date(), 'yyyy-MM-dd hh:mm:ss') // 格式化日期
 ```
 #### 字符串格式化工具
-```bash
+```js
   StringFormat()
 ```
 #### 日期格式化工具
-```bash
+```js
   Format(new Date(), 'yyyy-MM-dd')
 ```
 #### 日志工具
-```bash
+```js
   Log("...")
 ```
 #### 统一异常处理
-```bash
+```js
   Exception('系统异常', '10001', vm)
 ```
 
@@ -467,33 +488,13 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 ```
 
-# 调用文件
-  <templete>
-    <div>
-      <p>当前在线用户：<code>{{cout}}</code></p> 
-    </div>
-  </templete>
-  <script>
-    import filter from '../filters/filters.js'
-
-    export default {
-      data () {
-        return {
-          cout: filter.unumspa(10000782937897, ' ')
-        }
-      }
-    }
-  </script>
-
-  //当前在线用户：10 000 782 937 897
-```
 ## 打包
 
 ### 打包部署在服务器指定目录下：
 
 #### 第一步：
-```bash
-# config/index.js
+```js
+// config/index.js
   ...  
     build: {
       ...
@@ -502,8 +503,9 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
       ...
     }
   ...
+```
 
-
+```bash
 # 在命令窗口中使用
   npm run build
 ```
@@ -520,9 +522,9 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 ### 打包部署服务器根目录下：
 使用默认的即可
-```bash
+```js
 
-# config/index.js
+// config/index.js
   ...  
     build: {
       ...
