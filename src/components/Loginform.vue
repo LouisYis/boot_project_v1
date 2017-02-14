@@ -22,10 +22,10 @@
   </el-form>
 </template> 
 <script>
-  import filter from '../filters/filters.js'
-  import '../scss/_code.scss'
+  import 'scss/_code.scss'
   import {mapActions} from 'vuex'
-  import utils from 'utils'
+  import {Exception, StringFormat, Format, Log} from 'utils'
+  import {numspa} from 'filters'
 
   export default {
     name: 'loginform',
@@ -39,7 +39,7 @@
         }
       }
       return {
-        cout: filter.numspa(10000782937897, ' '),
+        cout: numspa(10000782937897, ' '),
         state: false,
         ruleForm: {
           password: 'admin',
@@ -89,7 +89,7 @@
             }, function (res) {
               // 测试统一异常处理工具
               try {
-                throw new utils.Exception('系统异常', '10001', vm)
+                throw new Exception('系统异常', '10001', vm)
               } catch (error) {
                 console.log(error)
                 // console.log(error.name)
@@ -106,12 +106,12 @@
             })
           } else {
             // 测试日志工具
-            utils.Log('error submit!!')
+            Log('error submit!!')
             // 测试字符串格式化工具
-            let s = utils.StringFormat('【{0}】{1}', '2013-15-11', 'adsfasdfddad')
+            let s = StringFormat('【{0}】{1}', '2013-15-11', 'adsfasdfddad')
             console.log(s)
             // 测试日期格式化工具
-            let d = utils.Format(new Date(), 'yyyy-MM-dd hh:mm:ss')
+            let d = Format(new Date(), 'yyyy-MM-dd hh:mm:ss')
             console.log(d)
             vm.state = true
             return false

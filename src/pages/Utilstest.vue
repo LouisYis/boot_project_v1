@@ -32,7 +32,7 @@
 
 <script>
   import navigation from 'components/Navigation.vue'
-  import utils from 'utils'
+  import {Exception, StringFormat, Format, Log} from 'utils'
 
   export default {
     components: {
@@ -52,28 +52,28 @@
     created () {
       let vm = this
       // 测试日期格式化工具
-      vm.dates.push(utils.Format(new Date(), 'yyyy-MM-dd hh:mm:ss'))
-      vm.dates.push(utils.Format(new Date(), 'yyyy-MM-dd'))
-      vm.dates.push(utils.Format(new Date(), 'hh:mm:ss'))
+      vm.dates.push(Format(new Date(), 'yyyy-MM-dd hh:mm:ss'))
+      vm.dates.push(Format(new Date(), 'yyyy-MM-dd'))
+      vm.dates.push(Format(new Date(), 'hh:mm:ss'))
       // 测试字符串格式化工具
-      vm.sfm.sfmdates.push(utils.StringFormat('【{0}】{1}', ...vm.sfm.sfmbase))
-      vm.sfm.sfmdates.push(utils.StringFormat('《{0}》{1}', ...vm.sfm.sfmbase))
-      vm.sfm.sfmdates.push(utils.StringFormat('-|- {0} -|- {1} ', ...vm.sfm.sfmbase))
-      vm.sfm.sfmdates.push(utils.StringFormat('《{1}》{0}', ...vm.sfm.sfmbase))
+      vm.sfm.sfmdates.push(StringFormat('【{0}】{1}', ...vm.sfm.sfmbase))
+      vm.sfm.sfmdates.push(StringFormat('《{0}》{1}', ...vm.sfm.sfmbase))
+      vm.sfm.sfmdates.push(StringFormat('-|- {0} -|- {1} ', ...vm.sfm.sfmbase))
+      vm.sfm.sfmdates.push(StringFormat('《{1}》{0}', ...vm.sfm.sfmbase))
     },
     methods: {
       // 测试统一异常处理
       showException: function () {
         let vm = this
         try {
-          throw new utils.Exception('系统异常', '10001', vm)
+          throw new Exception('系统异常', '10001', vm)
         } catch (error) {
           console.log(error)
         }
       },
       // 测试统一异常处理
       showLog: function () {
-        utils.Log('日志信息')
+        Log('日志信息')
       }
     }
   }

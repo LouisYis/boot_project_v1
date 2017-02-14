@@ -7,7 +7,7 @@ import Format from './format.js'
 // 打印日志
 import Log from './log.js'
 
-export default {
+export {
   Exception,
   StringFormat,
   Format,
