@@ -85,9 +85,11 @@
               // 若在项目中使用，此处需做相应更改
               console.log(data.body[0].id)
               global.authdata = data.body[0].id
-              sessionStorage.setItem('accessToken', global.authdata)
-              this.userlogin(vm.ruleForm)
-              vm.$router.push({path: '/home'})
+              // sessionStorage.setItem('accessToken', global.authdata)
+              this.userlogin(Object.assign(vm.ruleForm, {
+                'accessToken': global.authdata
+              }))
+              vm.$router.push({path: '/boot/home'})
             }, function (res) {
               // 测试统一异常处理工具
               try {
@@ -102,9 +104,11 @@
               // 注：在此处做了假处理，为服务无法调通时能够进入系统中
               // 正式环境不需要此处代码
               global.authdata = '7758525'
-              sessionStorage.setItem('accessToken', global.authdata)
-              this.userlogin(vm.ruleForm)
-              vm.$router.push({path: '/home'})
+              // sessionStorage.setItem('accessToken', global.authdata)
+              this.userlogin(Object.assign(vm.ruleForm, {
+                'accessToken': global.authdata
+              }))
+              vm.$router.push({path: '/boot/home'})
             })
           } else {
             // 测试日志工具

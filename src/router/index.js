@@ -20,7 +20,8 @@ router.beforeEach((to, from, next) => {
     // 路由跳转
     next()
   } else {
-    if (!sessionStorage.getItem('accessToken')) {
+    // console.log(JSON.parse(sessionStorage.getItem('user')).accessToken)
+    if (!sessionStorage.getItem('user')) {
       console.log(to.fullPath)
       next({
         path: '/',
@@ -30,7 +31,6 @@ router.beforeEach((to, from, next) => {
       })
     } else {
       NProgress.start()
-      global.authdata === '7758525' ? global.authname = '测试用户' : global.authname = '当前用户'
       next()
     }
   }

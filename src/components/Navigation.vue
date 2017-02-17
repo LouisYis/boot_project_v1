@@ -1,20 +1,20 @@
 <template>
   <el-menu theme="dark" router default-active="2" class="boot-nav" mode="horizontal" @select="handleSelect"> 
     <div class="boot-logo">BootAdmin</div>
-    <el-menu-item index="/home">Home</el-menu-item> 
+    <el-menu-item index="/boot/home">Home</el-menu-item> 
     <el-menu-item index="/menu">MenuTabs</el-menu-item> 
-    <el-submenu index='2'>
+    <el-submenu index='/boot/'>
       <template slot="title">Others</template>
-      <el-menu-item index="/vuextest">vuex测试</el-menu-item>
-      <el-menu-item index="/any">404</el-menu-item>
-      <el-menu-item index="/tables">Tables</el-menu-item>
-      <el-menu-item index="/utilstest">UtilsTest</el-menu-item>
+      <el-menu-item index="/boot/vuextest">vuex测试</el-menu-item>
+      <el-menu-item index="/boot/any">404</el-menu-item>
+      <el-menu-item index="/boot/tables">Tables</el-menu-item>
+      <el-menu-item index="/boot/utilstest">UtilsTest</el-menu-item>
     </el-submenu>
     <el-dropdown @command="handleCommand" trigger="click" class="right-bar">
       <span class="text-white user-head el-dropdown-link">
-        <img class="userPic" src="../assets/logo.png" height="40" width="40" :alt="sysUsername">{{sysUsername}}
+        <img class="userPic" src="../assets/logo.png" height="40" width="40" :alt="systemUser.username">{{systemUser.username}}
       </span> 
-      <el-dropdown-menu v-if="ust" class="right-bar-dropdown" slot="dropdown">
+      <el-dropdown-menu class="right-bar-dropdown" slot="dropdown">
         <el-dropdown-item command="a">个人中心</el-dropdown-item> 
         <el-dropdown-item  command="quit" divided>退出</el-dropdown-item>
       </el-dropdown-menu> 
@@ -24,27 +24,21 @@
 
 <script>
   import {Exception} from 'utils'
-  import {mapGetters, mapActions} from 'vuex'
+  import {mapState, mapActions} from 'vuex'
 
   export default {
     name: 'navigation',
-    data () {
-      return {
-        ust: false,
-        sysUsername: '未登录'
-      }
-    },
-    computed: {
-      ...mapGetters([
-        'getUser'
-      ])
-    },
+    computed: mapState({
+      // 箭头函数可使代码更简练
+      systemUser: state => state.user
+    }),
     methods: {
       handleSelect (key, keyPath) {
         console.log(key, keyPath)
         let vm = this
+        console.log(vm.systemUser)
         vm.basePath = keyPath.join('/')
-        if (sessionStorage.getItem('user') === null) {
+        if (!vm.systemUser) {
           try {
             throw new Exception('请登录', '10001', vm)
           } catch (error) {
@@ -53,27 +47,26 @@
           return
         }
       },
-      userme: function () {
-        this.userlogin()
-      },
       ...mapActions([
-        'userlogin'
+        'userlogin',
+        'userloginout'
       ]),
       handleCommand: function (command) {
         // this.$message('click' + command)
         if (command === 'quit') {
           this.$message('退出')
+          this.userloginout()
           this.$router.replace({path: '/'})
         }
       }
     },
     mounted () {
-      var user = sessionStorage.getItem('user')
-      if (user) {
-        user = JSON.parse(user)
-        this.sysUsername = user.username || ''
-        this.ust = true // 启用导航菜单下拉
-      }
+      // // let user = vm.systemUser
+      // if (user) {
+      //   // user = JSON.parse(user)
+      //   // this.systemName = user.username
+      //   // this.ust = true // 启用导航菜单下拉
+      // }
     }
   }
 </script>

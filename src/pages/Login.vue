@@ -19,22 +19,23 @@
 <style lang='scss'>
   .boot-page{
     height: 100%;
+    padding-top: 120px;
     .boot-nav{
       margin-bottom: 18px;
     }
   }
   .form-container{
     position: relative;
-        width: 480px;
-        padding: 60px 20px 20px;
-        margin: 120px auto;
-        background: #fff;
-        border-radius: 8px;
-        .login-info{
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0
-        }
+    width: 480px;
+    padding: 60px 20px 20px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    .login-info{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0
+    }
   }
 </style>

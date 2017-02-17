@@ -1,18 +1,13 @@
 <template>
   <div id="app"> 
     <!-- <img src="./assets/logo.png"> -->
-    <navigation></navigation>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import navigation from 'components/Navigation.vue'
   export default {
-    name: 'app',
-    components: {
-      navigation
-    }
+    name: 'app'
   }
 </script>
 

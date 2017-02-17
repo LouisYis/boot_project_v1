@@ -4,7 +4,7 @@
       <el-submenu index="2">
           <template slot="title"><i class="el-icon-message"></i>功能表格</template> 
           <el-menu-item index="2-1">
-            <router-link to='/tables/tableexpand' class="nav-router">展开表格</router-link>
+            <router-link to='/boot/tables/tableexpand' class="nav-router">展开表格</router-link>
           </el-menu-item>  
       </el-submenu>
       <el-menu-item index="3"><i class="el-icon-setting"></i>导航三</el-menu-item>

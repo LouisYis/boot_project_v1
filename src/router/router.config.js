@@ -9,33 +9,36 @@ const routers = [
     name: 'Login',
     component: resolve => require(['pages/Login'], resolve)
   }, {
-    path: '/home',
+    path: '/boot',
     name: 'Home',
-    component: resolve => require(['pages/Home'], resolve)
-  }, {
-    path: '/vuextest',
-    name: 'Vuextest',
-    component: resolve => require(['pages/Vuextest'], resolve)
-  }, {
-    path: '/tables',
-    name: 'Tables',
-    component: resolve => require(['pages/Tables'], resolve),
+    component: resolve => require(['pages/Home'], resolve),
     children: [
       {
-        path: 'tableexpand',
-        component: resolve => require(['components/Tableexpand'], resolve)
+        path: 'vuextest',
+        name: 'Vuextest',
+        component: resolve => require(['pages/Vuextest'], resolve)
       }, {
-        path: '*',
-        component: resolve => require(['components/Tableexpand'], resolve)
-      }]
-  }, {
-    path: '/utilstest',
-    name: 'Utilstest',
-    component: resolve => require(['pages/Utilstest'], resolve)
-  }, {
-    path: '/menu',
-    name: 'Menutabstest',
-    component: resolve => require(['pages/Menutabstest'], resolve)
+        path: 'tables',
+        name: 'Tables',
+        component: resolve => require(['pages/Tables'], resolve),
+        children: [
+          {
+            path: 'tableexpand',
+            component: resolve => require(['components/Tableexpand'], resolve)
+          }]
+      }, {
+        path: 'utilstest',
+        name: 'Utilstest',
+        component: resolve => require(['pages/Utilstest'], resolve)
+      // }, {
+      //   path: '/menu',
+      //   name: 'Menutabstest',
+      //   component: resolve => require(['pages/Menutabstest'], resolve)
+      }, {
+        path: 'home',
+        component: resolve => require(['pages/Main'], resolve)
+      }
+    ]
   }, {
     path: '*',
     name: 'Notfound',

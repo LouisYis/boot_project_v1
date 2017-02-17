@@ -16,12 +16,12 @@ export const userlogin = ({commit}, user) => {
 export const userloginout = ({commit}) => {
   commit('USER_LOGINOUT')
 }
-export const addmenutabs = ({commit}, tabs) => {
-  commit('ADD_MENUTABS', tabs)
-}
-export const removemenutabs = ({commit}, tabitem) => {
-  commit('REMOVE_MENUTABS', tabitem)
-}
-export const settabsactive = ({commit}, tabname) => {
-  commit('SET_MENUTABSACTIVE', tabname)
-}
+// export const addmenutabs = ({commit}, tabs) => {
+//   commit('ADD_MENUTABS', tabs)
+// }
+// export const removemenutabs = ({commit}, tabitem) => {
+//   commit('REMOVE_MENUTABS', tabitem)
+// }
+// export const settabsactive = ({commit}, tabname) => {
+//   commit('SET_MENUTABSACTIVE', tabname)
+// }
