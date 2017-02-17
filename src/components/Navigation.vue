@@ -2,7 +2,7 @@
   <el-menu theme="dark" router default-active="2" class="boot-nav" mode="horizontal" @select="handleSelect"> 
     <div class="boot-logo">BootAdmin</div>
     <el-menu-item index="/boot/home">Home</el-menu-item> 
-    <el-menu-item index="/menu">MenuTabs</el-menu-item> 
+    <!-- <el-menu-item index="/menu">MenuTabs</el-menu-item>  -->
     <el-submenu index='/boot/'>
       <template slot="title">Others</template>
       <el-menu-item index="/boot/vuextest">vuex测试</el-menu-item>

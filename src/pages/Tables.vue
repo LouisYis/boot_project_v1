@@ -5,8 +5,10 @@
         <vnavigation></vnavigation>
       </el-col>
       <el-col :sm='18' :md='19' :lg='20'>
-        <h2 class="text-white">表格展示区域</h2>
-        <router-view></router-view>
+        <h2 class="text-white">表格展示区域</h2> 
+        <transition name="component-fade" mode="out-in">
+         <router-view></router-view>
+        </transition>
       </el-col>
     </el-row>
   </div>
