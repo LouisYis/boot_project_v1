@@ -33,6 +33,10 @@ const routers = [
     name: 'Utilstest',
     component: resolve => require(['pages/Utilstest'], resolve)
   }, {
+    path: '/menu',
+    name: 'Menutabstest',
+    component: resolve => require(['pages/Menutabstest'], resolve)
+  }, {
     path: '*',
     name: 'Notfound',
     component: resolve => require(['pages/Notfound'], resolve)

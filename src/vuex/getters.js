@@ -7,3 +7,6 @@ export const getDv = state => {
 export const getUser = state => {
   return state.user
 }
+export const getMenuTabs = state => {
+  return state.menutabs
+}
