@@ -1,6 +1,5 @@
 <template>
   <div>
-    <navigation></navigation>
     <el-row :gutter='10'>
       <el-col :sm='6' :md='5' :lg='4'>
         <vnavigation></vnavigation>
@@ -15,17 +14,12 @@
 
 <script>
   import vnavigation from 'components/Vnavigation.vue'
-  import navigation from 'components/Navigation.vue'
   import tableexpand from 'components/Tableexpand.vue'
 
   export default {
     components: {
-      navigation,
       vnavigation,
       tableexpand
     }
   }
 </script>
-
-<style lang='scss' scoped>
-</style>

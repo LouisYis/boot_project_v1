@@ -1,20 +1,13 @@
 <template>
-	<div>
-		<navigation></navigation>
-  	<div class="container">
-  		<ul class="list-container" v-for="item in listDatas">
-  			<li>{{item.title}}</li>
-  		</ul>
-  	</div>
+	<div class="container">
+		<ul class="list-container" v-for="item in listDatas">
+			<li>{{item.title}}</li>
+		</ul>
 	</div>
 </template>
-<script>
-  import navigation from 'components/Navigation.vue'
 
+<script>
   export default {
-    components: {
-      navigation
-    },
     data () {
       return {
         listDatas: []
@@ -47,6 +40,7 @@
     }
   }
 </script>
+
 <style lang="scss" scoped>
   .list-container{
     li{

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <navigation></navigation>
     <div class="container">
       <h2 class="text-white title">公共工具Utils测试页面</h2>
       <el-row :gutter='20' class="text-white">
@@ -31,13 +30,9 @@
 </template>
 
 <script>
-  import navigation from 'components/Navigation.vue'
   import {Exception, StringFormat, Format, Log} from 'utils'
 
   export default {
-    components: {
-      navigation
-    },
     data () {
       return {
         // 日期格式化工具数据

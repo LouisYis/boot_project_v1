@@ -20,7 +20,8 @@
             show-icon>
     </el-alert> 
   </el-form>
-</template> 
+</template>
+ 
 <script>
   import 'scss/_code.scss'
   import {mapActions} from 'vuex'
@@ -63,7 +64,8 @@
         var vm = this
         console.log(vm.state)
         // var resurl = 'http://192.168.25.102:80/api/users'
-        var resurl = global.host + '/api/createusers'
+        // var resurl = global.host + '/api/createusers'
+        var resurl = global.host + '/webapi/createusers'
 
         vm.$refs[formName].validate((valid) => {
           if (valid) {
