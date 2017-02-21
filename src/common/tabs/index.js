@@ -26,12 +26,12 @@ vueTaber.beforeCreateEach((tab, next) => {
       console.log(error)
     }
   }
-  console.log('tab数：' + global.tabslength)
+  // console.log('tab数：' + global.tabslength)
 })
 vueTaber.beforeCloseEach((tab, next) => {
   console.log('tab数' + global.tabslength)
   if (global.tabslength === 0) {
-    console.log('转home')
+    // console.log('转home')
     next('home')
     // alert('最后一个不可关闭')
     global.tabslength ++
@@ -44,11 +44,11 @@ vueTaber.beforeCloseEach((tab, next) => {
       } catch (error) {
         console.log(error)
       }
-      console.log('不可关闭home后长度：' + global.tabslength)
+      // console.log('不可关闭home后长度：' + global.tabslength)
     } else {
       global.tabslength --
       next()
-      console.log('正常关闭后长度：' + global.tabslength)
+      // console.log('正常关闭后长度：' + global.tabslength)
     }
   }
 })
