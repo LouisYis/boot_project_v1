@@ -1,30 +1,67 @@
 <template>
-  <nav class="side-menu">
-    <ul class="nav">
-      <li :class="{'active': selected===item.text}" v-for="item in menus" @click="clickMenuItem(item)"><a>{{item.text}}</a></li>
-    </ul>
+  <nav class="side-menu">    
+    <el-menu default-active="2"  @select="clickMenuItem">
+      <template v-for="(item,index) in menus">
+        <el-menu-item v-if="item.only&&item.children.length>0"  :index='item.children[0].name +"|"+ item.children[0].title'><i
+                :class="{'active': selected===item.title}"></i>{{item.children[0].title}}
+        </el-menu-item>
+        <el-submenu :index="index+''" v-if="!item.only">
+            <template slot="title"><i ></i>{{item.title}}</template>
+            <el-menu-item v-for="child in item.children" :class="{'active': selected===child.title}" :index='child.name +"|"+ child.title'>{{child.title}}
+            </el-menu-item>
+        </el-submenu>
+        <!--<el-menu-item :class="{'active': selected===item.text}" v-for="item in menus" :index='item.name +"|"+ item.text'><a>{{item.text}}</a></el-menu-item>-->
+      </template>
+    </el-menu>
   </nav>
 </template>
 <script>
+  import {tabstemps} from 'common/tabs/tabs.config.js'
+  
   export default {
     data () {
       return {
-        menus: [{
-          text: '首页',
-          name: 'home'
-        }, {
-          text: '测试1',
-          name: 'test1'
-        }, {
-          text: '测试2',
-          name: 'test2'
-        }, {
-          text: '测试3',
-          name: 'test3'
-        }, {
-          text: '设置',
-          name: 'setting'
-        }],
+        menus: tabstemps,
+      //   menus: [{
+      //     text: '首页',
+      //     name: 'home',
+      //     children: [{
+      //       text: '测试22',
+      //       name: 'test2'
+      //     }]
+      //   }, {
+      //     text: '测试1',
+      //     name: 'test1',
+      //     children: [{
+      //       text: '测试1',
+      //       name: 'test1'
+      //     }]
+      //   }, {
+      //     text: '',
+      //     name: '',
+      //     only: true, // 只有一个节点
+      //     children: [{
+      //       text: '测试22',
+      //       name: 'test2'
+      //     }]
+      //   }, {
+      //     text: '音乐',
+      //     name: 'test3',
+      //     children: [{
+      //       text: '摇滚',
+      //       name: 'test2'
+      //     }, {
+      //       text: '轻音乐',
+      //       name: 'test2'
+      //     }]
+      //   }, {
+      //     text: '设置',
+      //     name: 'setting',
+      //     children: [{
+      //       text: '测试22',
+      //       name: 'test2'
+      //     }]
+      //   }],
         selected: '首页'
       }
     },
@@ -38,13 +75,14 @@
       })
     },
     methods: {
-      clickMenuItem (item) {
-        this.selected = item.text
-
+      clickMenuItem (key, keypath) {
+        const tabinfo = key.split('|')
+        this.selected = tabinfo[1]
+        console.log(key.split('|'))
         this.$taber.open({
-          name: item.name,
+          name: tabinfo[0],
           params: {
-            title: item.text
+            title: tabinfo[1]
           }
         })
       }

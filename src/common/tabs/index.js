@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueTaber from 'vue-tabs'
 import './vue-tabs.css'
-import tabs from './tabs.config.js'
+import {tabs} from './tabs.config.js'
 import {Exception} from 'utils'
 /* eslint-disable no-new */
 
@@ -9,9 +9,10 @@ const vueTaber = new VueTaber({
   tabs
 })
 global.tabslength = ''
+const maxlength = 3
 vueTaber.beforeCreateEach((tab, next) => {
   console.log(tab)
-  if (global.tabslength < 2) {
+  if (global.tabslength < maxlength) {
     if (tab.name === 'setting') {
       next('home')
     } else {
