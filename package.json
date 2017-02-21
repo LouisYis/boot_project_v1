@@ -21,7 +21,8 @@
     "node-sass": "^4.3.0",
     "normalize.css": "^5.0.0",
     "nprogress": "^0.2.0",
-    "sass-loader": "^4.1.1"
+    "sass-loader": "^4.1.1",
+    "vue-tabs": "^0.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

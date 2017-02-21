@@ -30,10 +30,10 @@ const routers = [
         path: 'utilstest',
         name: 'Utilstest',
         component: resolve => require(['pages/Utilstest'], resolve)
-      // }, {
-      //   path: '/menu',
-      //   name: 'Menutabstest',
-      //   component: resolve => require(['pages/Menutabstest'], resolve)
+      }, {
+        path: 'menu',
+        name: 'Tabsmenutest',
+        component: resolve => require(['pages/Tabsmenutest'], resolve)
       }, {
         path: 'home',
         component: resolve => require(['pages/Main'], resolve)

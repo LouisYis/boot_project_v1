@@ -59,7 +59,9 @@
       }
     },
     methods: {
-      ...mapActions(['userlogin']),
+      ...mapActions([
+        'userlogin'
+      ]),
       submitForm (formName) {
         var vm = this
         console.log(vm.state)
