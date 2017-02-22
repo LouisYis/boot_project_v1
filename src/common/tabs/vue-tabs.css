@@ -6,42 +6,46 @@
 }
 .tabs-list {
   list-style: none;
-  margin: 0px;
+  margin: 0 0 15px;
   padding: 0px;
   overflow: hidden;
   width: auto;
   zoom: 1;
+  position: relative;
+  margin: 0 0 15px;
+}
+.tab-list::before{
+  display: table;
+  content: "";
+}
+.tab-list::after{
+  clear: both;
 }
 .tabs-list > li {
   float: left;
-  padding: 0 16px;
+  padding: 0 26px;
   height: 42px;
   box-sizing: border-box;
   line-height: 42px;
   list-style: none;
   font-size: 14px;
-  color: #8391a5;
-  margin-bottom: -1px;
-  position: relative;
+  color: #fff;
+  position: relative; 
+  border-bottom: 1px solid #8391a5; /*底部颜色*/
 }
 .tabs-list > li.active {
   color: #20a0ff;
-}
-.tabs-list > li.active:after {
-  content: ' ';
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  height: 2px;
-  background-color: #20a0ff;
-  left: 0px;
+  border: 1px solid #8391a5;
+  border-bottom-color: transparent;
+  border-radius: 4px 4px 0 0;  
 }
 .tabs-list > li.active .btn-close {
-  opacity: 1;
+  opacity: 1;  
+  color: #20a0ff;
 }
 .tabs-list > li:hover {
   cursor: pointer;
-}
+ }
 .tabs-list > li:hover .btn-close {
   opacity: 1;
 }
@@ -50,19 +54,21 @@
   display: inline-block;
   opacity: 0;
   top: 2px;
-  right: 0px;
-  line-height: 12px;
+  right: 4px;
+  line-height: 15px;
   width: 14px;
   height: 14px;
+  vertical-align: middle;
   border-radius: 14px;
-  font-size: 12px;
+  font-size: 14px;
   color: #999;
   transition: all 0.2s ease;
 }
 .tabs-list > li .btn-close:hover {
-  color: #333;
-  transform: scale(1.5);
+  color: #fff;
+  text-align: center;
   cursor: pointer;
+  background-color: #97a8be;     
 }
 .tabs-content-wrapper {
   position: relative;

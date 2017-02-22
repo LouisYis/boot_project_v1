@@ -22,46 +22,6 @@
     data () {
       return {
         menus: tabstemps,
-      //   menus: [{
-      //     text: '首页',
-      //     name: 'home',
-      //     children: [{
-      //       text: '测试22',
-      //       name: 'test2'
-      //     }]
-      //   }, {
-      //     text: '测试1',
-      //     name: 'test1',
-      //     children: [{
-      //       text: '测试1',
-      //       name: 'test1'
-      //     }]
-      //   }, {
-      //     text: '',
-      //     name: '',
-      //     only: true, // 只有一个节点
-      //     children: [{
-      //       text: '测试22',
-      //       name: 'test2'
-      //     }]
-      //   }, {
-      //     text: '音乐',
-      //     name: 'test3',
-      //     children: [{
-      //       text: '摇滚',
-      //       name: 'test2'
-      //     }, {
-      //       text: '轻音乐',
-      //       name: 'test2'
-      //     }]
-      //   }, {
-      //     text: '设置',
-      //     name: 'setting',
-      //     children: [{
-      //       text: '测试22',
-      //       name: 'test2'
-      //     }]
-      //   }],
         selected: '首页'
       }
     },
