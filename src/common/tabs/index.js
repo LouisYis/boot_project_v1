@@ -13,12 +13,12 @@ const maxlength = 3
 vueTaber.beforeCreateEach((tab, next) => {
   console.log(tab)
   if (global.tabslength < maxlength) {
-    if (tab.name === 'setting') {
-      next('home')
-    } else {
-      global.tabslength ++
-      next()
-    }
+    // if (tab.name === 'setting') {
+    //   next('home')
+    // } else {
+    global.tabslength ++
+    next()
+    // }
   } else {
     // alert('已超出打开上限，请先关闭一些窗口后再打开')
     try {

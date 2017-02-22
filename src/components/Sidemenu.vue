@@ -1,13 +1,12 @@
 <template>
   <nav class="side-menu">    
-    <el-menu default-active="2"  @select="clickMenuItem">
+    <el-menu  @select="clickMenuItem">
       <template v-for="(item,index) in menus">
-        <el-menu-item v-if="item.only&&item.children.length>0"  :index='item.children[0].name +"|"+ item.children[0].title'><i
-                :class="{'active': selected===item.title}"></i>{{item.children[0].title}}
+        <el-menu-item v-if="item.only&&item.children.length>0" :class="{'sm-active': selected===item.children[0].title}"  :index='item.children[0].name +"|"+ item.children[0].title'>{{item.children[0].title}}
         </el-menu-item>
         <el-submenu :index="index+''" v-if="!item.only">
-            <template slot="title"><i ></i>{{item.title}}</template>
-            <el-menu-item v-for="child in item.children" :class="{'active': selected===child.title}" :index='child.name +"|"+ child.title'>{{child.title}}
+            <template slot="title">{{item.title}}</template>
+            <el-menu-item v-for="child in item.children" :class="{'sm-active': selected===child.title}" :index='child.name +"|"+ child.title'>{{child.title}}
             </el-menu-item>
         </el-submenu>
         <!--<el-menu-item :class="{'active': selected===item.text}" v-for="item in menus" :index='item.name +"|"+ item.text'><a>{{item.text}}</a></el-menu-item>-->
@@ -30,7 +29,7 @@
         if (tab) {
           this.selected = tab.meta.title
         } else {
-          this.selected = '首页'
+          this.selected = null
         }
       })
     },
@@ -54,7 +53,7 @@
     }
   }
 </script>
-<style>
+<style lang='scss' scoped>
   .side-menu {
     position: relative;
     width: 100%;
@@ -63,8 +62,16 @@
     top: 1px;
     background-color: #2f4050;
     color: #a7b1c2;
+    .el-menu--horizontal.el-menu--dark .el-submenu .el-menu-item.is-active, 
+    .el-menu-item.is-active {
+        color: #48576a;
+    }
+    .el-menu--horizontal.el-menu--dark .el-submenu .el-menu-item.sm-active, 
+    .el-menu-item.sm-active {
+        color: #20a0ff;
+    }
   }
-
+/*
   .nav {
     list-style: none;
     padding: 0px;
@@ -82,6 +89,6 @@
   li > a:hover {
      cursor: pointer;
      color: #fff;
-   }
+   }*/
 
 </style>

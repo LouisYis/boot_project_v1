@@ -39,6 +39,7 @@ router.beforeEach((to, from, next) => {
 // 监听路由跳转完成变化
 router.afterEach(transition => {
   NProgress.done()
+  global.tabslength = 0
 })
 
 export default router

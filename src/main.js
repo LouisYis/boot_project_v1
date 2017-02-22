@@ -15,7 +15,7 @@ Vue.use(VueResource)
 Vue.use(Element)
 Vue.use(Vuex)
 
-global.host = 'http://192.168.25.102:80'
+global.host = 'http://192.168.25.102:803'
 global.authdata = ''
 
 Vue.http.interceptors.push((request, next) => {
