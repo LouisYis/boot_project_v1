@@ -1,9 +1,9 @@
 {
   "name": "boot_project_v1",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "A full-featured Webpack setup with hot-reload, lint-on-save, unit testing & css extraction，element-ui, font-awesome, node-sass, vue-tabs",
   "author": "ChaoLeer <18709270892@163.com>",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
@@ -11,6 +11,11 @@
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
+  "keywords": [
+    "vue",
+    "脚手架",
+    "vue full-featured framework"
+  ],
   "dependencies": {
     "vue": "^2.1.10",
     "vue-router": "^2.2.0", 
